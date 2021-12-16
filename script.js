@@ -29,27 +29,24 @@
 // THEN the password is either displayed in an alert or written to the page
 // ```
 
+//add prompt function for userInput for num of char in password
+// num should be >=8 and < =128 if/else
+//userINput confirmation for numeric, lowercase, uppercase, and special characters separately
+//save those confirmations in separate variables
+// store all the values in form of arrays
+ //var numeric = [0,1....]
+ // based on user confirmation pick the correct arrays and concatenate them and store that concatenated array
+ //in a new variable
+ // loop num times (see second step)
+ //generate random num for concat array and grab the item this is based on the num value the user put it
+ //push that item in new password array
+ //return new password
 
-var generateBtn = document.querySelector("#generate");
+ //var numOfChar = prompt(How many characters?)
+//  if (!(numOfChar >= 8 && numOfChar < 128)) {
+   //   return;
+//  }
 
-let finalPass = "";
-
-let generatePassword = () => {
-  let firstQuestion = prompt("The length of the password should be between 8 and 128 characters");
-    if (firstQuestion >= 8 && firstQuestion <= 128) {
-    } else {
-      alert("Invalid entry.");
-      // We need to stop the code here somehow. End the cycle.
-    }
-  let secondQuestion = confirm("Do you want lowercase characters?");
-  if (secondQuestion) {
-
-  }
-  let thirdQuestion = confirm("Do you want uppercase characters?");
-  let fourthQuestion = confirm("Do you want to include numerals in your password?");
-  let fifthQuestion = confirm("Do you want to include special characters in your password?");
-  return firstQuestion;
-}
 
 
 
@@ -62,6 +59,60 @@ function writePassword() {
   passwordText.value = password;
 
 }
+var generateBtn = document.querySelector("#generate");
+
+// let finalPass = "";
+
+let lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+let upperLetters = ["A", "B", "C" , "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+let numbers = [0, 1, 2, 3 , 4, 5, 6, 7, 8, 9];
+let symbolics = [" ", "!", "'", '"', "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"];
+
+
+
+let generatePassword = () => {
+  let finalArray = [];
+  let numOfChar = prompt("Please enter a password length between 8 and 128 characters.");
+    if (numOfChar >= 8 && numOfChar <= 128) {
+    } else {
+      alert("Invalid entry.");
+      return;
+    }
+  let lowerCase = confirm("Do you want lowercase characters?");
+   if (lowerCase) {
+     finalArray.push(...lowerLetters);
+    }
+    else {
+
+     }
+  let upperCase = confirm("Do you want uppercase characters?");
+     if (upperCase) {
+       finalArray.push(...upperLetters);
+     } else {
+  
+     }
+  let numerals = confirm("Do you want to include numerals in your password?");
+     if(numerals) {
+       finalArray.push(...numbers);
+     } else {
+    
+     }
+  let symbols = confirm("Do you want to include special characters in your password?");
+     if(symbols) {
+       finalArray.push(...symbolics);
+     } else {
+    
+     }
+  for (let i = 0; i < numOfChar; i++) {
+    // let randomArray = finalArray[Math.floor(Math.random() * finalArray.length)];
+    // console.log(finalArray[randomArray])
+    let randomArray = Math.floor(Math.random() * finalArray.length)
+    let lastArray = finalArray[randomArray]
+    console.log(lastArray);
+  }
+  return finalArray;
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
