@@ -37,6 +37,11 @@ select the length of their password from 8 to 126 characters.
 5. Chrome DevTools
 6. A little bit of markdown
 
+
+## GitPages Link:
+
+https://mully7773.github.io/Password-Generator/
+
 ## Author:
 
 Nick Mullenmeister
